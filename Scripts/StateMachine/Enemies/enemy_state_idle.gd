@@ -13,6 +13,7 @@ func init() -> void:
 	pass
 	
 func Enter() ->void:
+	print("Orc enters idle state")
 	enemy.direction = 0
 	_timer = randf_range(state_duration_min , state_duration_max)
 	enemy.UpdataAnimation(anim_name)

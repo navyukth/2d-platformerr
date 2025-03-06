@@ -6,7 +6,7 @@ const Dir= [ -1, 0 , 1]
 
 var player : Player
 var invulnerable : bool =false
-var direction :float = 0
+var direction :int = 0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D

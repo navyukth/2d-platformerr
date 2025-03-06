@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0rhdie832db6"]
+[gd_scene load_steps=17 format=3 uid="uid://b0rhdie832db6"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_hwagn"]
 [ext_resource type="Texture2D" uid="uid://dfp53sxqx6kmp" path="res://Asstes/Orc.png" id="2_dh0pt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/Enemies/enemy_state_machine.gd" id="5_viium"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Enemies/enemy_state_idle.gd" id="6_1rbm3"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Enemies/enemy_state_wander.gd" id="7_etwdj"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Enemies/enemy_state_stun.gd" id="8_3hqv4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6uto"]
 radius = 5.0
@@ -137,5 +138,9 @@ next_state = NodePath("../Wander")
 
 [node name="Wander" type="Node" parent="Enemy_State_Machine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("7_etwdj")
-state_animation = 0.7
+state_animation = 1.0
+next_state = NodePath("../Idle")
+
+[node name="Stun" type="Node" parent="Enemy_State_Machine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_3hqv4")
 next_state = NodePath("../Idle")

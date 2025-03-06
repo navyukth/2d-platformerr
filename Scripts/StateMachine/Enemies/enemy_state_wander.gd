@@ -7,8 +7,8 @@ class_name EnemyStateWander extends EnemyState
 
 @export_category("AI")
 @export var state_animation : float = 1.0
-@export var state_cycles_min:int = 1
-@export var state_cycles_max:int = 3
+@export var state_cycles_min : int = 1
+@export var state_cycles_max : int = 3
 
 @export var next_state : EnemyState
 
@@ -33,7 +33,7 @@ func Exit() -> void:
 	
 func Process(_delta : float)-> EnemyState:
 	_timer -= _delta
-	if _timer < 0:
+	if _timer <= 0:
 		return next_state
 	return null
 	

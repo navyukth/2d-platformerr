@@ -103,8 +103,8 @@ hframes = 8
 vframes = 6
 
 [node name="HurtBox" parent="Sprite2D" instance=ExtResource("4_rhmfq")]
-visible = false
 position = Vector2(1, 7)
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
 position = Vector2(11, -6)
@@ -112,12 +112,12 @@ shape = SubResource("CircleShape2D_e6uto")
 debug_color = Color(0.859895, 0.179219, 0, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_f4ng7")
 
 [node name="HitBox" parent="." instance=ExtResource("3_1pdlp")]
-visible = false
+collision_mask = 0
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, -6)

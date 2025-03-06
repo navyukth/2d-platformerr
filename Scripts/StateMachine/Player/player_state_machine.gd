@@ -9,7 +9,6 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	ChangeState( current_state.Process(delta) )
@@ -31,10 +30,17 @@ func Initialize( _player : Player) ->void:
 		if c is State:
 			states.append(c)
 			
-		if states.size() > 0:
-			states[0].player = _player
-			ChangeState(states[0])
-			process_mode=Node.PROCESS_MODE_INHERIT
+	if states.size() == 0:
+		return
+		
+	states[0].player = _player
+	states[0].state_machine = self
+	
+	for states in states:
+		states.init()
+	
+	ChangeState(states[0])
+	process_mode=Node.PROCESS_MODE_INHERIT
 
 
 func ChangeState(new_state : State)->void:

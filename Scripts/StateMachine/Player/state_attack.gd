@@ -13,18 +13,20 @@ class_name StateAttack extends State
 @export var move_speed :float =100.0
 var attacking : bool = false
 
+func _ready() -> void:
+	pass
+
 func Enter() ->void:
 	print("Entring Attack State")
 	attack_hurt_box.monitoring = true
 	attacking = true
-	if attacking ==true:
-		if  player.attacktype=="heavy":
-			player.UpdateAnimation("attack_heavy")
-			animation_player.animation_finished.connect(EndAttack)
+	if  player.attacktype=="heavy":
+		player.UpdateAnimation("attack_heavy")
+		animation_player.animation_finished.connect(EndAttack)
 			
-		elif player.attacktype=="lite":
-			player.UpdateAnimation("attack_lite")
-			animation_player.animation_finished.connect(EndAttack)
+	elif player.attacktype=="lite":
+		player.UpdateAnimation("attack_lite")
+		animation_player.animation_finished.connect(EndAttack)
 	pass
 
 func Exit() ->void:

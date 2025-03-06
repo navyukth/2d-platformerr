@@ -9,7 +9,7 @@ class_name EnemeyStateStun extends EnemyState
 @export var next_state : EnemyState
 
 var _damage_positon : Vector2
-var _direction : int
+var _direction : float
 var _animation_finshed  : bool = false
 
 func init() -> void:

@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 const JUMP_VELOCITY = -300.0
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -49,6 +50,7 @@ func TakeDamage(hurt_box : HurtBox) ->void:
 		return
 	UpdateHp( -hurt_box.damage)
 	print("Player Took damage: ",hurt_box.damage)
+	
 	if hp > 0 :
 		player_damages.emit(hurt_box)
 	else:
@@ -61,4 +63,11 @@ func UpdateHp( delta : int) -> void:
 	pass
 	
 func MakeInvunerable( _duration : float = 1.0) ->void:
+	invulnerable = true
+	hit_box.monitoring = false
+	
+	await get_tree().create_timer( _duration ).timeout
+	
+	invulnerable = false
+	hit_box.monitoring = true
 	pass

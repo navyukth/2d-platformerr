@@ -5,6 +5,8 @@ class_name StateWalk extends State
 
 @export var move_speed :float =100.0
 
+func _ready() -> void:
+	pass
 
 func Enter() ->void:
 	if player.direction < 0:

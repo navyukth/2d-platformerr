@@ -6,7 +6,8 @@ class_name EnemyStateWander extends EnemyState
 @onready var sprite_2d: Sprite2D = $"../../Sprite2D"
 
 @export_category("AI")
-@export var state_animation : float = 1.0
+@export var state_animation : float = 0.5
+
 @export var state_cycles_min : int = 1
 @export var state_cycles_max : int = 3
 
@@ -20,12 +21,12 @@ func init() ->void:
 	
 func Enter() ->void:
 	print("Orc enters wander state")
+	enemy.UpdataAnimation(anim_name)
 	_timer = randi_range(state_cycles_min,state_cycles_max) * state_animation
 	var rand = randi_range( 0 , 2 )
 	_direction=enemy.Dir[ rand ]
 	enemy.velocity.x = _direction * wander_speed
 	sprite_2d.scale.x = -1 if _direction < 0 else 1
-	enemy.UpdataAnimation(anim_name)
 	pass
 
 func Exit() -> void:

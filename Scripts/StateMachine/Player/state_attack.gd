@@ -3,6 +3,8 @@ class_name StateAttack extends State
 
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
+@onready var attack_hurt_box: HurtBox = %AttackHurtBox
+
 @onready var walk: StateWalk = $"../walk"
 @onready var idle: StateIdle = $"../Idle"
 
@@ -13,7 +15,7 @@ var attacking : bool = false
 
 func Enter() ->void:
 	print("Entring Attack State")
-	
+	attack_hurt_box.monitoring = true
 	attacking = true
 	if attacking ==true:
 		if  player.attacktype=="heavy":
@@ -28,6 +30,8 @@ func Enter() ->void:
 func Exit() ->void:
 	animation_player.animation_finished.disconnect(EndAttack)
 	attacking = false
+	attack_hurt_box.monitoring = false
+	
 	pass
 	
 func Process(_delta: float) ->State:
